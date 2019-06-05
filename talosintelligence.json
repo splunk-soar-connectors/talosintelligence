@@ -1,0 +1,322 @@
+{
+    "appid": "e5fe8aa3-49f7-4339-aaca-8d6727c236a9",
+    "name": "Talos Intelligence",
+    "description": "This app implements investigative actions by integrating with the Talos Intelligence cloud reputation service",
+    "type": "reputation",
+    "product_vendor": "Cisco",
+    "logo": "logo_talosintelligence.svg",
+    "logo_dark": "logo_talosintelligence_dark.svg",
+    "product_name": "Talos Intelligence",
+    "product_version_regex": ".*",
+    "publisher": "Splunk",
+    "license": "Copyright (c) 2019 Splunk Inc.",
+    "app_version": "1.0.1",
+    "utctime_updated": "2018-12-18T11:19:43.470695Z",
+    "package_name": "phantom_talosintelligence",
+    "main_module": "talosintelligence_connector.pyc",
+    "min_phantom_version": "4.0.1068",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "base_url": {
+            "description": "Talos Base URL",
+            "data_type": "string",
+            "required": false,
+            "default": "https://talosintelligence.com",
+            "order": 0
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup ip",
+            "identifier": "lookup_ip",
+            "description": "Queries IP info",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "IP to query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0,
+                    "example_values": [
+                        "8.8.8.8"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.blacklists.bl.spamcop.net.lookup_uri",
+                    "data_type": "string",
+                    "example_values": [
+                        "http://spamcop.net/w3m?action=checkblock&ip=8.8.8.8"
+                    ],
+                    "contains": [
+                        "url"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.blacklists.cbl.abuseat.org.lookup_uri",
+                    "data_type": "string",
+                    "example_values": [
+                        "http://cbl.abuseat.org/lookup.cgi?ip=8.8.8.8"
+                    ],
+                    "contains": [
+                        "url"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.blacklists.pbl.spamhaus.org.lookup_uri",
+                    "data_type": "string",
+                    "example_values": [
+                        "http://www.spamhaus.org/query/bl?ip=8.8.8.8"
+                    ],
+                    "contains": [
+                        "url"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.blacklists.sbl.spamhaus.org.lookup_uri",
+                    "data_type": "string",
+                    "example_values": [
+                        "http://www.spamhaus.org/query/bl?ip=8.8.8.8"
+                    ],
+                    "contains": [
+                        "url"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.category.description",
+                    "data_type": "string",
+                    "example_values": [
+                        "Search Engines and Portals"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.category.long_description",
+                    "data_type": "string",
+                    "example_values": [
+                        "Search engines and other initial points of access to information on the Internet."
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.cidr",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.classifications.*.classification",
+                    "data_type": "string",
+                    "example_values": [
+                        "cnc"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.daily_mag",
+                    "data_type": "numeric",
+                    "example_values": [
+                        4.757809112065634
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.daily_spam_level",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.daily_spam_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "None"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.daychange",
+                    "data_type": "numeric",
+                    "example_values": [
+                        22
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.display_ipv6_volume",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.dnsmatch",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.email_score",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.email_score_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "Good"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.expiration",
+                    "data_type": "string",
+                    "example_values": [
+                        "2016-05-25T20:45:37"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.first_seen",
+                    "data_type": "string",
+                    "example_values": [
+                        "2013-05-03T14:44:05"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.hostname",
+                    "data_type": "string",
+                    "contains": [
+                        "host name"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip",
+                    "data_type": "string",
+                    "example_values": [
+                        "8.8.8.8"
+                    ],
+                    "contains": [
+                        "ip"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.monthly_mag",
+                    "data_type": "numeric",
+                    "example_values": [
+                        4.696899177380364
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.monthly_spam_level",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.monthly_spam_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "None"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.organization",
+                    "data_type": "string",
+                    "example_values": [
+                        "Google"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.web_score",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.web_score_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "Neutral"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.response",
+                    "data_type": "string",
+                    "example_values": [
+                        "Neutral"
+                    ],
+                    "column_name": "Response",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Response: Neutral"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
