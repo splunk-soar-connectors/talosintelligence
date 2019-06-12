@@ -14,7 +14,7 @@
     "utctime_updated": "2018-12-18T11:19:43.470695Z",
     "package_name": "phantom_talosintelligence",
     "main_module": "talosintelligence_connector.pyc",
-    "min_phantom_version": "4.0.1068",
+    "min_phantom_version": "4.2.7532",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "base_url": {
