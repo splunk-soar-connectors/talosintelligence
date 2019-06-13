@@ -127,7 +127,7 @@
                     "data_path": "action_result.data.*.category.long_description",
                     "data_type": "string",
                     "example_values": [
-                        "Search engines and other initial points of access to information on the Internet."
+                        "Search engines and other initial points of access to information on the Internet"
                     ]
                 },
                 {
