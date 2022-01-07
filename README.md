@@ -10,10 +10,6 @@ Minimum Product Version: 4\.2\.7532
 
 This app implements investigative actions by integrating with the Talos Intelligence cloud reputation service
 
-# phtalosintelligence
-Community app for Cisco Talos intelligence
-
-
 ### Configuration Variables
 The below configuration variables are required for this Connector to operate.  These variables are specified when configuring a Talos Intelligence asset in SOAR.
 
